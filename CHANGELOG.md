@@ -1,4 +1,4 @@
-## Changes from 4.0.0 to 4.0.0
+## Changes from 3.6.0 to 4.0.0
 
 * Update `dependency-check-core` to the 9.x series ([9.0.8](https://github.com/jeremylong/DependencyCheck/blob/v9.0.8/CHANGELOG.md))
   * This **requires** nvd-clojure users to request a NVD API key and configure it correctly.
