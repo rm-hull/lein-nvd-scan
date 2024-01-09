@@ -23,9 +23,25 @@
 (ns nvd.task
   "Clojure CLI tool entry points: `check`."
   (:require
-   [nvd.task.check :refer [-main]]))
+    [clojure.tools.deps :as deps]
+    [clojure.tools.deps.util.session :as session]
+    [nvd.task.check :refer [-main]]))
+
+(defn- get-classpath [{:keys [aliases]}]
+  (let [{:keys [root-edn user-edn project-edn]} (deps/find-edn-maps "deps.edn")
+        master-edn (deps/merge-edns [root-edn user-edn project-edn])
+        aliases (or aliases [])
+        combined-aliases (deps/combine-aliases master-edn aliases)
+        basis (session/with-session
+                (deps/calc-basis master-edn {:resolve-args   (merge combined-aliases {:trace true})
+                                             :classpath-args combined-aliases}))]
+    (deps/join-classpath (:classpath-roots basis))))
 
 (defn check
-  "Arguments: `:config-filename` (optional), `:classpath` (required)."
-  [{:keys [config-filename classpath]}]
-  (-main (or config-filename "") classpath))
+  "Arguments:
+    `:config-filename` (optional),
+    `:classpath` (optional, defaults to the classpath of deps.edn in the current directory)
+    `:aliases` (optional, defaults to [])."
+  [{:keys [config-filename classpath] :as opts}]
+  (-main (or config-filename "") (or classpath
+                                     (get-classpath opts))))
