@@ -4,7 +4,7 @@
         clansi/clansi {:mvn/version "1.0.0"}
         org.clojure/data.json {:mvn/version "2.5.0"}
         org.slf4j/slf4j-simple {:mvn/version "2.0.10"}
-        org.owasp/dependency-check-core {:mvn/version "9.0.8"}
+        org.owasp/dependency-check-core {:mvn/version "10.0.3"}
         rm-hull/table {:mvn/version "0.7.1"}
         trptcolin/versioneer {:mvn/version "0.2.0"}}
  :mvn/repos {"central" {:url "https://repo1.maven.org/maven2/"}

@@ -1,4 +1,4 @@
-(defproject nvd-clojure "4.0.0"
+(defproject nvd-clojure "4.0.1"
   :description "National Vulnerability Database dependency checker"
   :url "https://github.com/rm-hull/nvd-clojure"
   :license {:name "The MIT License (MIT)"
@@ -7,7 +7,7 @@
                  [clansi "1.0.0"]
                  [org.clojure/data.json "2.5.0"]
                  [org.slf4j/slf4j-simple "2.0.10"]
-                 [org.owasp/dependency-check-core "9.0.8"]
+                 [org.owasp/dependency-check-core "10.0.3"]
                  [rm-hull/table "0.7.1"]
                  [trptcolin/versioneer "0.2.0"]
                  ;; Explicitly depend on a certain Jackson, consistently.
